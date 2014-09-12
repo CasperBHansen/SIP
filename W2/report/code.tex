@@ -1,0 +1,85 @@
+%
+% code.tex
+%
+
+% usage: \codefig{label}{file}{firstline}{lastline}{description}
+
+\section{Assignments}
+
+\subsection{Cumulative Histogram}
+\label{appendix:1-3}
+\codefig{1-3}{../assignment1.m}{1}{9}{Cumulative histogram}
+
+\subsection{Floating-point Image CDF}
+\label{appendix:1-4}
+\codefig{1-4}{../assignment1.m}{11}{17}{Floating-point CDF}
+
+\subsection{Invertibility}
+\label{appendix:1-5}
+\codefig{1-5}{../assignment1.m}{19}{23}{CDF Invertibility}
+
+\subsection{Histogram Matching}
+\label{appendix:1-6}
+\codefig{1-6}{../assignment1.m}{25}{37}{Histogram matching}
+
+\subsection{Histogram Matching Comparison}
+\label{appendix:1-7}
+Notice that we have to supply an image to our custom \code{histmatch}
+function --- hence the difference in calculating the arguments. The results
+should however both follow the same histogram to match.
+\codefig{1-7}{../assignment1.m}{39}{50}{Histogram matching comparison}
+
+\subsection{Simplistic Midway Algorithm}
+\label{appendix:1-9}
+\codefig{1-9}{../assignment1.m}{52}{65}{Simplistic midway algorithm}
+
+\subsection{Comparison of Filters}
+\label{appendix:2-3}
+
+\codefig{2-3}{../assignment2.m}{1}{50}{Filter comparison}
+
+\section{Functions}
+
+\subsection{RGB to Greyscale Conversion Function}
+\label{appendix:rgb2grey}
+Computing the grey-scale image of an RGB image is done by scaling each channel
+using estimated visual perception coefficients\cite[pp. 11]{SB}.
+\codefig{rgb2grey}{../rgb2grey.m}{1}{3}{RGB to Greyscale conversion}
+
+\subsection{Cumulative Histogram}
+\label{appendix:histcum}
+To compute the cumulative histogram we use MatLab's \code{imhist} to calculate
+the image histogram, and the cumulative sum thereof, using MatLab's
+\code{cumsum}.
+\codefig{histcum}{../histcum.m}{1}{4}{MatLab function that computes the
+cumulative histogram}
+
+\subsection{Floating-point Image CDF}
+\label{appendix:fpimg}
+We extract the image data of $I$ interpreting it as floating-point values, or
+\code{double}. Then we apply the given \code{cdf} function to each of these
+values, returning the result.
+\codefig{fpimg}{../fpimg.m}{1}{4}{MatLab function that computes the
+floating-point image}
+
+\subsection{Pseudo-inverse of a CDF}
+\label{appendix:pseudo-inverse}
+We declare a list of the discrete values $\{0,\dots,255\}$ on which $f$ is
+defined. For each of these we then apply the \code{cdf} function, and find all
+the indices into this list for which the condition $f(s) \geq l$ holds. For
+each of these we then apply the previously calculated values. The minimum of
+this set is then returned.
+\codefig{finv}{../finv.m}{1}{7}{MatLab function that computes a pseudo-inverse
+of a given CDF}
+
+\subsection{History-matching}
+\label{appendix:histmatch}
+On lines 2--3 we calculate $C_x$ and $C_z$, and following that $C_z^{-1}$
+based on these on line 4. This results in a CDF that is equivalent to that of
+equation (3.25) \cite[pp. 74]{SB}.
+\codefig{histmatch}{../histmatch.m}{1}{6}{History matching algorithm}
+
+\subsection{Midway Specification}
+\label{appendix:midway}
+\codefig{midway}{../midway.m}{1}{3}{Midway specification algorithm}
+
