@@ -1,0 +1,101 @@
+%
+% theory.tex
+%
+
+\section{Theory}
+% In this section we address the theoretical questions of Fourier transforms.
+
+\subsection{Fourier Series and Transform Differences}
+% what is the difference between a fourier series and the Fourier transform?
+% pp. 115
+The Fourier series produce an approximation of a function by way of a weighted
+sum of complex exponentials (or harmonic functions), the accuracy of which
+increases with the number of terms employed. The Fourier transform is a
+synthesis of a Fourier series (summation) of discrete frequencies into a
+function of continuous (integral) frequencies.
+
+\subsection{Continuous Fourier Transforms}
+% prove that the continuous Fourier transform of a real and even function is
+% real and even
+Consider the complex exponential term of the Fourier transform $e^{-ik_xx}$.
+Because the integral is done over the interval $[-\infty;\infty]$, for any
+intermediate discrete value $a$ of the exponent we have that;
+\begin{align}
+    e^{ia}
+    &= e^0 (\cos a + i \sin a)
+    = \cos a + i \sin a
+    \\
+    e^{-ia}
+    &=e^0 (\cos a - i \sin a)
+    = \cos a - i \sin a
+\end{align}
+From this general example, we see that the imaginary part of the equations
+cancel out for each symmetric term over the integral, making it real.
+
+% prove that even and oddness is preserved; maybe a simple example x^2 can be
+% approximated by one term
+
+\subsection{Derivation of Fourier Transform}
+% Derive the continuous Fourier transform of \delta (x - d) + \delta (x + d)
+% for some constant d
+Regardless of the constant $d$ the integral over the Dirac (or impulse-)
+function will stay at exactly $1$. So, each of the terms must become $1$, and
+so the Fourier transform for entire expression $\delta(x - d) + \delta(x + d)$
+must then be $2$. 
+% pp. 123, dirac (impulse function) is always 1, both becomes 1 for integrals
+% going from -infinity to +infinity, therefore it must yield the result 2
+
+\subsection{The Box Function}
+Consider the box function
+\begin{align}
+    b_a(x) =
+    \begin{cases}
+        \frac{1}{a}     & \mbox{iff. $|x| \leq \frac{a}{2}$} \\
+        0               & \mbox{otherwise}
+    \end{cases}
+\end{align}
+Show that
+
+\subsubsection{\mdseries $\int_{-\infty}^{\infty} b_a(x) dx = 1$}
+For the general case, we can say that the integral will always have a length
+over the $x$-axis of $2 \frac{a}{2}$ and the height of it will always be
+$\frac{1}{a}$. If we consider the formula for the area of a box and apply
+these findings we have that $A = \frac{1}{a} \cdot 2 \frac{a}{2}$. Reducing
+this, we find that the area is always equal to 1.
+\begin{align}
+    \frac{1}{a} \cdot 2 \frac{a}{2}
+    = \frac{1}{a} \cdot \frac{2a}{2}
+    = \frac{1}{a} \cdot a
+    = \frac{a}{a}
+    = 1
+\end{align}
+
+\subsubsection{\mdseries The continuous Fourier transform of $b$ using (5.10)
+is $B(k) = \frac{1}{ak\pi} \sin \frac{ak}{2}$. Rewrite $B(k)$ using the
+$\sinc(x) = \frac{\sin x}{x}$ function.}
+\begin{align}
+    \frac{1}{ak\pi} \sin \left( \frac{ak}{2} \right)
+    = \frac{1}{\pi} \frac{1}{ak} \sin \left( ak \frac{1}{2} \right)
+    = \frac{1}{2\pi} \frac{1}{ak \frac{1}{2} } \sin \left( ak \frac{1}{2} \right)
+    = \frac{1}{2\pi} \frac{ \sin \left( ak \frac{1}{2} \right) }{ak \frac{1}{2} }
+    = \frac{1}{2\pi} \sinc \left( \frac{ak}{2} \right)
+\end{align}
+
+\subsubsection{\mdseries $\lim_{a \rightarrow 0} B(k) = \frac{1}{2\pi}$ (Hint:
+$\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1$). Does this prove an entry in
+Table 5.2?}
+Since $\lim_{x \rightarrow 0} \frac{\sin x}{x} = 1$, then letting $a
+\rightarrow 0$ for $\frac{1}{2\pi} \sinc \left( \frac{ak}{2} \right)$ we have
+that $\lim_{a \rightarrow 0} \frac{1}{2\pi} \sinc \left( \frac{ak}{2} \right)
+= \frac{1}{2\pi} \cdot 1$, which yields $\lim_{a \rightarrow 0} B(k) =
+\frac{1}{2\pi}$.
+
+% If we let $W = \frac{1}{2\pi}$ and 
+
+\subsubsection{\mdseries The filter $b$ has compact support in space (only
+uses a small set of neighbouring pixels in $x$). Is the same true in the
+frequency domain, $k$? Explain your answer.}
+Because of the inherent revertibility of Fourier transforms, such information
+of $b$ must carry over from spatial domain into the frequency domain, so as
+to make the frequency domain revertible. Therefore, this must be true of the
+frequency domain as well.
