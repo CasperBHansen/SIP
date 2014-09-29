@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+
+\usepackage{a4wide}
+\usepackage{amsmath,amssymb}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{ulem}
+
+\newcommand{\sinc}{\textnormal{sinc}}
+
+\newcommand{\code}[1]{{\tt #1}}
+\newcommand{\file}[1]{{\tt #1}}
+
+\newcommand{\figref}[1]{(see figure~\ref{#1})}
+
+% usage: \codefig{label}{file}{firstline}{lastline}{description}
+\newcommand{\codefig}[5]
+{
+\begin{figure}[H]
+    \lstinputlisting[firstnumber=#3,firstline=#3,lastline=#4]{#2}
+    \caption{#5 (#2)}
+    \label{code:#1}
+\end{figure}
+}
+
+% usage: \fig
+\newcommand{\fig}[4]
+{
+\begin{figure}[H]
+    \center
+    \includegraphics[scale=#3]{figures/#2}
+    \caption{#4}
+    \label{fig:#1}
+\end{figure}
+}
+
+\definecolor{comment}{rgb}      {0.38, 0.62, 0.38}
+\definecolor{keyword}{rgb}      {0.10, 0.10, 0.81}
+\definecolor{identifier}{rgb}   {0.00, 0.00, 0.00}
+\definecolor{string}{rgb}       {0.50, 0.50, 0.50}
+
+\lstset
+{
+    language=matlab,
+    % general settings
+    numbers=left,
+    frame=single,
+    basicstyle=\footnotesize\ttfamily,
+    tabsize=2,
+    breaklines=true,
+    showstringspaces=false,
+    % syntax highlighting
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    identifierstyle=\color{identifier},
+    stringstyle=\color{string},
+}
+
+%\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{2}
+
+%\renewcommand{\thesection}{}
+\renewcommand{\thesubsubsection}{\textnormal{\roman{subsubsection}.}}
+
+\title
+{
+    {\Large Assignment 4} \\
+    Signal \& Image Processing
+}
+
+\author
+{
+    Casper B. Hansen\\
+    University of Copenhagen\\
+    Department of Computer Science\\
+    {\tt fvx507@alumni.ku.dk}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\begin{multicols}{2}
+    \begin{abstract}
+        ...
+    \end{abstract}
+    \vfill{\ }\columnbreak
+    \tableofcontents
+\end{multicols}
+\clearpage
+
+\input{scalespace}
+\input{invfilter}
+
+\appendix
+\include{code}
+
+\begin{thebibliography}{9}
+
+\bibitem{SB}
+    Solomon \& Breckon,
+    \emph{Fundamentals of Digital Image Processing - A Practical Approach with
+    Examples in Matlab},
+    2011
+
+\end{thebibliography}
+
+\end{document}
+
