@@ -1,0 +1,68 @@
+%
+% scalespace.tex
+%
+
+\section{Scale-space Operators}
+
+\subsection{Convolution Theorem}
+To show that $G(x,y,\sigma) * G(x,y,\tau) = G(x,y,\sqrt{\sigma^2 + \tau^2})$
+are equivalent I tried to match on the pixels for one-to-one equivalency using
+the \code{ginput} tool. Although they are very close, I found that they didn't
+match perfectly. I think this is due to how the convolution is carried out, as
+it seems to shift the entire image 1--2 pixels toward the upper-left, and
+hence some variance in the result might be expected. To counter this, I also
+tried the alternative built-in \code{conv2} method, but this produced a
+similar result. 
+
+\fig{convolve-thm}{1}{1}{Self-convoluted result (left) and combined kernel
+(right)}
+
+As can be seen in figure (\ref{fig:convolve-thm}) the results using window
+size of $50$, and letting $\sigma = 5$ and $\tau = 2$ we see almost no
+difference in the appearance of the two filter kernels. The code used to
+produce the figure above can be reviewed in section
+\ref{appendix:convolve-thm}. Note that I have tried to account for the
+shifting behavior described.
+
+\subsection{Scale Normalized Derivatives}
+
+\subsubsection{Analytical expression}
+I'm not quite sure what is meant by analytical expression, so I'v reduced the
+equation into discrete form --- hopefully this is what was asked for.
+
+\begin{align}
+    H(x,y,\tau)
+    &= I_{xx}(x,y,\tau) + I_{yy}(x,y,\tau)
+     = \tau^{\gamma(2+0)} \frac{\partial^2 I(x,y,\tau)}{\partial x^2}
+     + \tau^{\gamma(0+2)} \frac{\partial^2 I(x,y,\tau)}{\partial y^2} \\
+    &= \tau^2 \frac{\partial^2 I(x,y,\tau)}{\partial x^2}
+     + \tau^2 \frac{\partial^2 I(x,y,\tau)}{\partial y^2}
+     = \tau^2 \left[ \frac{\partial^2 I(x,y,\tau)}{\partial x^2}
+     + \frac{\partial^2 I(x,y,\tau)}{\partial y^2} \right] \\
+    &= \tau^2 \left[
+       I(x+1,y,\tau)
+     + I(x-1,y,\tau)
+     - 4 I(x,y,\tau)
+     + I(x,y+1,\tau)
+     + I(x,y-1,\tau)
+       \right]
+%    &= \tau^2 \left[
+%       I(x,y) * G(x+1,y,\tau)
+%     + I(x,y) * G(x-1,y,\tau)
+%     - 4 I(x,y) * G(x,y,\tau)
+%     + I(x,y) * G(x,y+1,\tau)
+%     + I(x,y) * G(x,y-1,\tau)
+%       \right] \\
+%    &= \tau^2 \sum_{i=I_{min}}^{I_{max}}\sum_{j=J_{min}}^{J_{max}}
+%       \left[ I(x + i, y + i, \tau) \right]
+\end{align}
+
+\subsubsection{Scales}
+After fighting with MatLab for many hours, I had to give in to this. I failed
+to produce the values of $\tau$ sought after. My attempt, as it looks at this
+time can be found in \ref{appendix:scale-extremals}.
+
+%\begin{align}
+%    I(x,y,\tau) = I(x,y) * \left( \frac{1}{2\pi\tau^2}e^{-\frac{x^2 + y^2}{2\tau^2}} \right)
+%\end{align}
+

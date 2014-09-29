@@ -1,0 +1,46 @@
+%
+% invfilter.tex
+%
+
+\section{Inverse Filtering}
+
+% 4
+\subsection{Linear Shift Invariant}
+\begin{multicols}{2}
+\noindent
+    Figure (\ref{fig:lsi-degraded}) shows the result of the program code
+    given in \ref{appendix:lsi-degraded}.
+    \vfill{\ }\columnbreak
+    \fig{lsi-degraded}{4}{0.5}{The linear shift invariantly (LSI) degraded
+    result}
+\end{multicols}
+
+% 5
+\subsection{Inverse and Band-pass Filtering}
+Considering the inverse filter $\frac{1}{H(k_x,k_y)}$ we see that for the
+resulting equation, when applying it to $G(k_x,k_y) + N(k_x,k_y)$, where
+$N(x,y)$ is the additive noise, we have that for instances of $G(k_x,k_y) <
+N(k_x,k_y)$ the noise term becomes dominant, an example of which is given in
+figure (\ref{fig:inv-bandpass}) (left) where we allow most of the frequencies
+to pass right through. Since noise often consists of high-frequency signals,
+the high-pass (see appendix \ref{appendix:highpass}) filter allows for
+filtering out some of these signals, notably at the expense of $G(k_x,k_y)$ as
+well.
+
+\fig{inv-bandpass}{5}{0.8}{Inverse band-pass filter at different cut-off
+frequencies}
+
+From the tests I have run on this approach I find that the result is generally
+not good.
+
+\subsection{Wiener Filter}
+The Wiener filter attempts to overcome the limitations of the straight-forward
+---and naive--- approach taken by simply filtering out at a fixed cut-off
+frequency, as is the case with the high-pass filter. It does so by weighting
+the contributions of $G(k_x,k_y)$ and $N(k_x,k_y)$, respectively, by way of
+the signal/noise power signal.
+
+\fig{inv-wiener}{6}{0.75}{Inverse Wiener results}
+
+The results of using this filter is by far an improvement over the band-pass
+filter method.
