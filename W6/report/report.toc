@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Experiments on Translation}{2}
+\contentsline {subsection}{\numberline {1.1}Translation matrix filter}{2}
+\contentsline {subsection}{\numberline {1.2}Generalized translation}{2}
+\contentsline {subsection}{\numberline {1.3}Fourier transform translation}{3}
+\contentsline {subsection}{\numberline {1.4}Non-integer fourier translation}{3}
+\contentsline {section}{\numberline {2}Procrustes Transformations}{3}
+\contentsline {subsection}{\numberline {2.1}Free parameters and minimum $N$}{3}
+\contentsline {subsection}{\numberline {2.2}Finding procrustes parameters}{4}
+\contentsline {section}{\numberline {4}Affine and Projective Alignments}{5}
+\contentsline {subsection}{\numberline {4.1}Homogeneous coordinate space}{5}
+\contentsline {subsection}{\numberline {4.2}Exact procrustes mapping}{5}
+\contentsline {subsection}{\numberline {4.3}Exact affine mapping}{5}
+\contentsline {subsection}{\numberline {4.4}Projective transform}{6}
+\contentsline {section}{\numberline {A}Assignments}{7}
+\contentsline {subsection}{\numberline {A.1}Translation}{7}
+\contentsline {subsection}{\numberline {A.2}General Translation}{7}
+\contentsline {subsection}{\numberline {A.3}Fourier transform translation}{8}
+\contentsline {subsection}{\numberline {A.4}Non-integer fourier translation}{9}
+\contentsline {subsection}{\numberline {A.5}Finding procrustes parameters}{10}
+\contentsline {subsection}{\numberline {A.6}Exact procrustes mapping}{10}
+\contentsline {subsection}{\numberline {A.7}Exact affine mapping}{11}
+\contentsline {subsection}{\numberline {A.8}Projective transform}{11}
+\contentsline {section}{\numberline {B}Functions}{12}
+\contentsline {subsection}{\numberline {B.1}Translate Function}{12}

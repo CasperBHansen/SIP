@@ -1,0 +1,123 @@
+%
+% procrustes.tex
+%
+
+\section{Procrustes Transformations}
+
+\subsection{Free parameters and minimum $N$}
+I see no extraordinary conditions in the described problem, and so I would
+expect it to exhibit exactly the same free parameters as in the general case;
+namely 4 free parameters; $\alpha$, $\gamma$, $\lambda_1$ and $\lambda_2$,
+with which we can express the entire transformation matrix by
+\begin{align}
+    \label{eqn:procrustes}
+    T &=
+    \begin{bmatrix}
+        \alpha & \gamma & \lambda_1 \\
+        -\gamma & \alpha & \lambda_2 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{align}
+
+which decomposes into three matrices (translation $X$, rotation $R$ and
+scaling $S$);
+\begin{align}
+    X =
+    \begin{bmatrix}
+        1 & 0 & \beta_x \\
+        0 & 1 & \beta_y \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \qquad
+    R =
+    \begin{bmatrix}
+        \cos \theta & \sin \theta & 0 \\
+        -\sin \theta & \cos \theta & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \qquad
+    S =
+    \begin{bmatrix}
+        s & 0 & 0 \\
+        0 & s & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{align}
+
+where
+
+\begin{align}
+    \alpha = s \cos \theta \quad
+    \gamma = s \sin \theta \quad
+    \lambda_1 = s(\beta_x \cos \theta + \beta_y \sin \theta) \quad
+    \lambda_2 = s(-\beta_x \sin \theta + \beta_y \cos \theta)
+\end{align}
+
+Because the minimization of the procrustes translation vector $\vec{t}$ is
+merely a negated average of the input vectors there is no dependence on $N$
+for this parameter. Likewise, so is the case of scaling; if we let $N=1$, then
+$s$ becomes $1$, which produces an identity matrix, not transforming anything.
+I failed to find a mathematical argument as to the required $N$ in order to
+produce the rotation matrix, can however state that I would imagine that since
+we must build the two eigenvectors $U$ and $V$, we should need at least $N=2$.
+
+\subsection{Finding procrustes parameters}
+In this assignment I've commented out the interactive code, which asks the
+user to pick out four sequential points for each of the images presented.
+These have been made static for a particular set of points that I've picked
+out myself --- a rendition of the result is shown below. The code to produce
+this can be reviewed in appendix \ref{assign:finding-procrustes}.
+
+\fig{2-2}{2-2}{Rendition of the pre-selected point outcome}
+
+From the output of running \code{procrustes} on the input and target points I
+found that the scale $s$ is $1.0977$, whilst the translation vector $\vec{t}$
+was $(-88.3279, 10.6171)^T$ and the rotation matrix was given by
+
+\begin{align*}
+    \begin{bmatrix}
+        0.9820 & -0.1888 \\
+        0.1888 &  0.9820
+    \end{bmatrix}
+\end{align*}
+
+From these we can built the corresponding homogeneous matrices for
+translation $X$, rotation $R$ and scaling $S$, and computing the product
+transformation matrix $T = SRX$ we can then read out the procrustes parameters
+one by one.
+
+\begin{align}
+    \footnotesize
+    \begin{bmatrix}
+        1.0977 & 0 & 0 \\
+        0 & 1.0977 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.9820 & -0.1888 & 0 \\
+        0.1888 & 0.9820 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 & -88.3279 \\
+        0 & 1 & 10.6171 \\
+        0 & 0 & 1
+    \end{bmatrix}
+    &=
+    \footnotesize
+    \begin{bmatrix}
+        1.0780 & -0.2073 & -76.9113 \\
+        0.2073 & 1.780 & -113.5232 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\end{align}
+
+This gives us the full transformation matrix, and by equation
+(\ref{eqn:procrustes}) we can now read out the parameters from this matrix.
+\begin{align}
+    \alpha = 1.0780 \qquad
+    \gamma = -0.2073 \qquad
+    \lambda_1 = -76.9113 \qquad
+    \lambda_2 = -113.5232
+\end{align}
+

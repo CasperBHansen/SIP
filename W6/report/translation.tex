@@ -1,0 +1,80 @@
+%
+% translation.tex
+%
+
+\section{Experiments on Translation}
+
+\subsection{Translation matrix filter}
+
+\begin{multicols}{2}
+    
+    The 2-dimensional homogeneous translation matrix is given by
+    \begin{align}
+        \begin{bmatrix}
+            1 & 0 & t_x \\
+            0 & 1 & t_y \\
+            0 & 0 & 1
+        \end{bmatrix}
+        \text{, if we let $w=1$.}
+    \end{align}
+    
+    For a translation matrix one pixel to the right, we let $t_x=1$ and
+    $t_y=0$. And the corresponding filter kernel matrix would then be given by
+    \begin{align}
+        \begin{bmatrix}
+            0 & 0 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bmatrix}
+    \end{align}
+    
+    \vfill\columnbreak
+    
+    It is easy to express $\widetilde{I}(x,y)$ by $I(x,y)$; each pixel in the
+    transformed image $\widetilde{I}$ corresponds to the pixel immediately to
+    the left of it of $I$. That is
+
+    \begin{align}
+        \widetilde{I}(x,y) = I(x-1,y)
+    \end{align}
+    
+    An example of applying this simple 1-pixel translation kernel is given in
+    appendix \ref{assign:translation}.
+
+\end{multicols}
+
+\subsection{Generalized translation}
+The code for this assignment is given in appendix
+\ref{assign:general-translation}, and the generalized translation function is
+given in appendix \ref{func:translate}. An example rendition of its effects is
+shown below in figure \ref{fig:1-2}.
+
+\fig{1-2}{1-2}{Example translation}
+
+I've chosen to use a wrapping boundary condition. I found this to be the most
+desirable boundary condition for translation, although I could have simply
+ignored pixels outside the boundaries of the image.
+
+\newpage
+\begin{multicols}{2}
+    \subsection{Fourier transform translation}
+    The code used to produce figure \ref{fig:1-3} below can be review in
+    appendix \ref{assign:fourier-translation}.
+    \fig[scale=0.30]{1-3}{1-3}{Fourier translation using $\vec{t} = (2,1)^T$}
+    As I couldn't do this using a more direct approach I sought some help on
+    the internet, and so this solution code is largely inspired by an
+    answer\footnote{http://www.stackoverflow.com/questions/25827916/matlab-shifting-an-image-using-fft} on StackOverflow.
+    
+    \vfill{\ }\columnbreak
+    
+    \subsection{Non-integer fourier translation}
+    The code used to produce figure \ref{fig:1-4} below can be review in
+    appendix \ref{assign:non-integer-fourier-translation}.
+    \fig[scale=0.5]{1-4}{1-4}
+    {Fourier translation using $\vec{t} = (1.5,0.5)^T$}
+    
+    As can be seen from the above figure, non-integer translations produces
+    artifacts in the image, as apparent of the square image, and causes
+    inversions as well, as evident of the \code{peak} produced image.
+\end{multicols}
+

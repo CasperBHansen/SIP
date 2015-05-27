@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Theory}{2}
+\contentsline {subsection}{\numberline {1.1}Fourier Series and Transform Differences}{2}
+\contentsline {subsection}{\numberline {1.2}Continuous Fourier Transforms}{2}
+\contentsline {subsection}{\numberline {1.3}Derivation of Fourier Transform}{2}
+\contentsline {subsection}{\numberline {1.4}The Box Function}{2}
+\contentsline {subsubsection}{\numberline {\textnormal {i.}}\mdseries $\DOTSI \intop \ilimits@ _{-\infty }^{\infty } b_a(x) dx = 1$}{2}
+\contentsline {subsubsection}{\numberline {\textnormal {ii.}}\mdseries The continuous Fourier transform of $b$ using (5.10) is $B(k) = \frac {1}{ak\pi } \qopname \relax o{sin}\frac {ak}{2}$. Rewrite $B(k)$ using the $\textnormal {sinc}(x) = \frac {\qopname \relax o{sin}x}{x}$ function.}{2}
+\contentsline {subsubsection}{\numberline {\textnormal {iii.}}\mdseries $\qopname \relax m{lim}_{a \rightarrow 0} B(k) = \frac {1}{2\pi }$ (Hint: $\qopname \relax m{lim}_{x \rightarrow 0} \frac {\qopname \relax o{sin}x}{x} = 1$). Does this prove an entry in Table 5.2?}{3}
+\contentsline {subsubsection}{\numberline {\textnormal {iv.}}\mdseries The filter $b$ has compact support in space (only uses a small set of neighbouring pixels in $x$). Is the same true in the frequency domain, $k$? Explain your answer.}{3}
+\contentsline {section}{\numberline {2}Practice}{3}
+\contentsline {subsection}{\numberline {2.1}Power Spectrum}{3}
+\contentsline {subsection}{\numberline {2.2}Spatial Representation}{3}
+\contentsline {subsection}{\numberline {2.3}Planar Wave Filter}{4}
+\contentsline {subsection}{\numberline {2.4}Isotropic Gaussian kernel}{4}
+\contentsline {subsection}{\numberline {2.5}Spatial Derivatives}{5}
+\contentsline {subsection}{\numberline {2.6}Derivative Orders}{5}
+\contentsline {section}{\numberline {A}Appendix}{6}
+\contentsline {subsection}{\numberline {A.1}Power Spectrum}{6}
+\contentsline {subsection}{\numberline {A.2}Spatial Representation}{7}
+\contentsline {subsection}{\numberline {A.3}Planer Wave Filter}{7}
+\contentsline {subsection}{\numberline {A.4}Isotropic Gaussian Kernel}{8}

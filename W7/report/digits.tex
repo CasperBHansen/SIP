@@ -1,0 +1,27 @@
+%
+% digits.tex
+%
+
+\section{Digit Recognition}
+The strategy I followed to relax the method was to produce a very thin,
+minimal base shape of each digit to project hits from and a very forgiving,
+bold shape of each digit to project misses from. Each of these are shown in
+figure \ref{fig:5a} below.
+
+The first (thin) shape was produced using the skeletonization technique after
+a slight erosion which makes for simpler skeletons, and the latter by simply
+eroding the inverse.
+
+\fig{5a}{5a}{Original digits (top), skeletonized hit structural elements
+(middle) and expanded (or eroded) miss structural elements}
+
+These were then used as the structural elements for detecting the digit shapes
+in the source image, where $B_1$ is designated as being the skeletonized shape
+and $B_2$ as the bold shape.
+
+\fig{5b}{5b}{Points of recognition, based on hit-or-miss calculation}
+
+As evident of figure \ref{fig:5b} above, we see that we do indeed detect all
+three digits in the source image. Review the code that was used to produce
+these results in appendix \ref{assign:recognition}.
+

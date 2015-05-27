@@ -1,0 +1,38 @@
+%
+% sinogram.tex
+%
+
+\section{Sinogram}
+In medical imaging we do not have an image source per se. The way the input is
+produced is by shooting, or projecting, rays through an object, and then read
+the scattered rays as they exit the object. So, all we have is a numerical
+value for each projection that is read. If we think of these as the integral
+over the projected rays, our task is then to recover the integrated function.
+
+We can express this idea by the Radon transform, given in equation
+(\ref{eqn:radon-transform}).
+\begin{align}
+    \label{eqn:radon-transform}
+    p(\xi,\phi) &= \int f(x,y) \delta(x \cos \phi + y \sin \phi - \xi)
+    {\ }dx{\ }dy
+\end{align}
+
+Where $f(x,y)$ is the function we wish to recover, $\delta$ is the Dirac delta
+(or impulse) function, $\phi$ is the angle of projection, and $\xi$ is the
+offset of the projected line from the origin. Figuratively, at least in our
+case, we are trying to express, mathematically, all line projections (or
+exiting rays) covering the image plane for all angles $\phi \in M$.
+
+In MatLab, we can simplify the calculation of this mathematical expression by
+simply rotating the source image, using \code{imrotate}, and integrate
+(\code{sum}) for each angle $\phi$ (see \ref{functions:sinogram} for
+implementation).
+
+\fig{sino-box}{1-a}{0.80}{Sinograms of \file{box.png} and \file{mir.tif} using
+180 projections}
+
+Figure (\ref{fig:sino-box}) above shows a rendition of the corresponding
+sinogram for the \file{box.png} and \file{mir.tif} images, calculated using
+the algorithm discussed, and the MatLab program given in
+\ref{assignment:sinogram}. As can be seen, the image produced has $M$ columns,
+each of which represent the integral for a given $\phi$.

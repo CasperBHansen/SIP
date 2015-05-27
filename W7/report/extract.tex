@@ -1,0 +1,24 @@
+%
+% extract.tex
+%
+
+\section{Feature Extraction}
+After a bit of twisting and tweaking of the knobs involved in the pipeline I
+ended up using, I arrived at a pipeline that; produces a gray-scale image of
+the image, detects the edges of the gray-scale version by subtracting a
+dilated from an eroded version of it, and then closed.
+
+Each step of the pipeline is shown in figure \ref{fig:6a} below.
+
+\fig{6a}{6a}{Pipeline}
+
+I did try to perform thickening, but I couldn't get it to work properly, and
+produced far worse results. It does, however, produce a good result, which is
+shown in figure \ref{fig:6b} below.
+
+\fig{6b}{6b}{Result on a black background}
+
+Further adjustments could be made to increase the alpha-channel mask, but the
+overall result is somewhat satisfactory as we have managed to capture and
+mostly isolated the shape of the flower.
+

@@ -1,0 +1,63 @@
+%
+% alignment.tex
+%
+
+\setcounter{section}{3}
+\section{Affine and Projective Alignments}
+
+\subsection{Homogeneous coordinate space}
+To show why we prefer the homogeneous coordinate space over Euclidean
+coordinate space, we consider a homogeneous point $p$ in $n$-nary space and a
+series of transformations $M_0, M_1, \dots,M_m$ that we wish to apply to point
+$p$ in that particular order.
+
+Applying a transformation should be of the form $p_b = M_{i}p_a$, taking an
+input vector $p_a$ producing an ouput vector $p_b$. This allows us to reason
+that since $M_{i}a$ produces a vector, we can apply the exact same form to the
+following transformation --- that is, $p_c = M_{i+1}p_b$. By induction it then
+follows that $p_{final}(M_m(M_{m-1}(\dots(M_0)\dots)p_{original}$.
+
+We can further argue that since $A(BC) = (AB)C$, we then have that the
+concatenated transformations can be expressed by
+$(M_m(M_{m-1}(\dots(M_0)\dots)p = (M_{m}M_{m-1} \dots M_{0})p$ and hence, we
+can precalculate the entire sequence of transformations into one single
+matrix, which can then be applied to any point, and thus eliviates many
+redundant matrix multiplications. Since the translation transformation cannot
+be carried out by matrix multiplication using Euclidean coordinate space, we
+cannot apply the same optimization technique, and hence homogeneous coordinate
+space is preferred.
+
+\begin{multicols}{2}
+    \subsection{Exact procrustes mapping}
+    No, there is no such mapping because we're are limiting to the basic
+    transformations; translation, scaling and rotation.
+    \fig[scale=0.5]{4-2}{4-2}{Attempted procrustes mapping from $X$ to $Y$}
+    Review the code to produce the figure above in appendix
+    \ref{assign:procrustes-mapping}.
+
+    \vfill\columnbreak
+
+    \subsection{Exact affine mapping}
+    Affine gives us only one more transformation to work with; namely shearing.
+    This, however, is still not enough to make an exact mapping.
+    \fig[scale=0.5]{4-3}{4-3}{Attempted procrustes mapping from $X$ to $Y$}
+    Review the code to produce the figure above in appendix
+    \ref{assign:affine-mapping}.
+\end{multicols}
+
+\newpage
+\subsection{Projective transform}
+\begin{multicols}{2}
+    As far as I can see, we have all the parameters available that we need to
+    make an exact mapping with projective, although the code I've written does
+    not seem to work, and I have failed to find any bug in it (it can be
+    reviewed in appendix \ref{assign:projective-transform}).
+
+    The above figure to the right shows the output of the code. It looks like
+    it produces a very squeezed rectangle.
+
+    \vfill{\ }\columnbreak
+    \fig[scale=0.5]{4-4}{4-4}
+    {Faulty projective transformation mapping $X$ to $Y$}
+\end{multicols}
+

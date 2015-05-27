@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Erosion and Dilation as Set Theory}{2}
+\contentsline {section}{\numberline {2}Sketch Outcomes}{2}
+\contentsline {section}{\numberline {3}Experimentation}{2}
+\contentsline {subsection}{\numberline {3.1}Hit-and-Miss}{3}
+\contentsline {subsection}{\numberline {3.2}Top hat}{3}
+\contentsline {subsection}{\numberline {3.3}Bottom hat}{3}
+\contentsline {section}{\numberline {4}Background Normalization}{4}
+\contentsline {section}{\numberline {5}Digit Recognition}{4}
+\contentsline {section}{\numberline {6}Feature Extraction}{5}
+\contentsline {section}{\numberline {A}Assignments}{7}
+\contentsline {subsection}{\numberline {A.1}Opening and Closing}{7}
+\contentsline {subsection}{\numberline {A.2}Experimentation}{8}
+\contentsline {subsection}{\numberline {A.3}Background Normalization}{9}
+\contentsline {subsection}{\numberline {A.4}Digit Recognition}{10}
+\contentsline {subsection}{\numberline {A.5}Feature Extraction}{11}
+\contentsline {section}{\numberline {B}Functions}{11}
+\contentsline {subsection}{\numberline {B.1}RGB to Gray-scale}{11}

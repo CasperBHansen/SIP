@@ -1,0 +1,28 @@
+%
+% sketch.tex
+%
+
+\section{Sketch Outcomes}
+By applying the {\it open} ($\circ$) and {\it close} ($\bullet$) operations,
+given in equation (\ref{eqn:openclose}) below, to the provided image data, we
+get two smaller objects for the {\it opened} image, and a larger one for the
+{\it closed} one.
+
+\begin{align}
+    A \circ B = (A \ominus B) \oplus B
+    \qquad
+    A \bullet B = (A \oplus B) \ominus B
+    \label{eqn:openclose}
+\end{align}
+
+What is happening is that the {\it open} operation is first eroding away outer
+details, followed by a dilation which closes the gaps left behind. For the
+{\it closing} operation we first dilate the image, causing an expansion of the
+object, followed by an erosion which then strips away excess outer detail.
+
+\fig{2}{2}{Original (left), opened (middle) and closed (right)}
+
+Had we used a diamond structural element of radius $2$ we would get a single
+object in both cases. This is due to the fact that the diamond would be able
+to reach across the inner gaps of the original objects and that the little
+blob in the lower right area is too far away for it to reach across.

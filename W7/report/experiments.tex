@@ -1,0 +1,50 @@
+%
+% experiments.tex
+%
+
+\section{Experimentation}
+\begin{multicols}{2}
+    \noindent
+    In each application of the three operations I've used the same three
+    structural elements, the parameters of which are given in the table.
+    
+    \begin{align}
+        \text{TopHat}_B(A) &= A - ((A \ominus B) \oplus B) \label{eqn:tophat} \\
+        \text{BotHat}_B(A) &= ((A \oplus B) \ominus B) - A \label{eqn:bothat}
+    \end{align}
+    
+    \vfill\columnbreak
+
+    \begin{figure}[H]
+        \center
+        \begin{tabular}{|l|c|c|}
+            \hline {\bf Name} & {\bf Shape} & {\bf Parameters} \\ \hline
+            line & {\tt 'line'} & (50,1) \\ \hline
+            disk & {\tt 'disk'} & 3 \\ \hline
+            square & {\tt 'square'} & 6 \\ \hline
+        \end{tabular}
+        \caption{Structural elements used}
+        \label{fig:experimental-se}
+    \end{figure}
+\end{multicols}
+
+\newpage
+\subsection{Hit-and-Miss}
+On the left of figure \ref{fig:3a} below, we see that the line does indeed
+find the lines as expected, in the middle we get anything which fits the disc
+shape of radius 3, and lastly so is the case for the larger square, which
+finds less objects, but still some.
+
+\fig{3a}{3a}{Hit-and-miss experiments}
+
+\subsection{Top hat}
+The top hat operation (\ref{eqn:tophat}) subtracts the detected objects of the
+opening from the original image, the effects of which can be seen in figure
+\ref{fig:3b} below.
+\fig{3b}{3b}{Top hat experiments}
+
+\subsection{Bottom hat}
+The bottom hat operation (\ref{eqn:bothat}) subtracts the original image from
+the closed, the effects of which can be seen in figure \ref{fig:3c} below.
+\fig{3c}{3c}{Bottom hat experiments}
+

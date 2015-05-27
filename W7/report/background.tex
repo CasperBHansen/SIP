@@ -1,0 +1,22 @@
+%
+% background.tex
+%
+
+\section{Background Normalization}
+After some experimentation I found that in and around the radii interval 7--9
+the opened image begins to settle into a stabile image. As we can see in
+figure \ref{fig:4a}, when the radius is set to 7 we stil have a slight
+artifact on the left, but with radii 8 and 9 there is virtually no immediate
+visible change in the produced image.
+
+\fig{4a}{4a}{Background extractions of \file{rice.png} in the interval 7--9.}
+
+We choose a radius of 8 because it is the first in the interval to produce an
+even background result and the last from which notable changes can be seen,
+and if we were to continue increasing the radius we would end up with the
+original, or much like it --- which would defeat the purpose.
+
+\fig{4b}{4b}{Optimal background normalization of \file{rice.png}}
+
+As apparent from figure \ref{fig:4b} the background appears to have vanished
+from the image when we subtract it from the original image.

@@ -1,0 +1,69 @@
+%
+% backprojection.tex
+%
+
+\newpage
+\section{Backprojection}
+The reconstruction of the original image, or in the case of medical imaging,
+the actual image we wish to create, is called backprojection. It is expressed
+mathematically, as below
+
+\begin{align}
+    \label{eqn:backprojection}
+    f_{\text{BP}}(x,y)
+    &= \int_{0}^{\pi} p(x \cos \phi + y \sin \phi, \phi)
+    {\ }d\phi
+\end{align}
+
+As we can see, we are integrating over a hemisphere ($\phi = [0;\pi]$), just
+as with the projections in producing the sinogram, we mustn't let the angle
+$\phi$ surpass $180^\circ$ --- just in radians.
+
+% assignment 2
+\subsection{Reconstruction}
+By integrating over $p(\xi,\phi)$ in the hemisphere interval we are
+essentially estimating a reconstruction of the original image from the
+sinogram, as the ones shown below in figure \ref{fig:bp-sinograms} that we
+will reconstruct (see figure \ref{fig:bp-reconstructed}).
+
+\fig{bp-sinograms}{2-a}{0.75}{Sinograms to be reconstructed}
+
+The implementation of this algorithm can be reviewed in
+\ref{functions:backprojection}. This algorithm uses a precalculated set of
+coordinates using \code{meshgrid} (line 5) in conjunction with a mid-point
+offset (line 4) to find the indices (lines 10--11) over which we want to
+integrate (line 17).
+
+\fig{bp-reconstructed}{2-b}{0.75}{Reconstructed images from sinograms}
+
+% assignment 3
+\subsection{Filtered}
+The algorithm for filtered backprojection remains largely the same as that of
+ordinary backprojection, although it involves convoluting with a ramp filter
+for each summation. This has been built into the previously mentioned MatLab
+implementation of backprojection (see \ref{functions:backprojection}) using an
+optional filter argument. This makes it extensible, and the ramp filter is
+simply supplied as an argument in \ref{assignment:backprojection}.
+
+\fig{fbp-reconstructed}{3-a}{0.80}{Reconstructed images from sinograms using
+filtered backprojection}
+
+As we can see by comparing figure \ref{fig:bp-reconstructed} with the results
+of the filtered backprojection, shown above in figure
+\ref{fig:fbp-reconstructed}, there is a clear improvement in distinguishing
+the features of the image, as opposed to the latter attempt at reconstructing
+the images. 
+
+% assignment 4
+\subsection{Projections}
+As we increase the number of projections $M$ used to produce the sinograms, we
+see a steady increase in clarity of the reconstructed image from its sinogram.
+In figure \ref{fig:projections} below I've chosen to show renditions for very
+small values of $M$, as this allows us to observe the individual projection
+lines very clearly.
+
+\fig{projections}{4}{0.70}{Sinograms and corresponding reconstructions as $M$
+increases}
+
+It should be noted that for $M > N$ I stop seeing any effect within the
+reconstructed image.

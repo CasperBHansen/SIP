@@ -1,0 +1,36 @@
+%
+% Procrustes Tranformations
+% fvx507@alumni.ku.dk
+%
+
+%% assignment 2.2
+
+clc, clear all;
+
+A = imread('images/imtransform3.gif');
+B = imread('images/imtransform4.gif');
+
+%figure (1), imshow(A), colormap(gray);
+%[x,y] = ginput(4); input = [x,y];
+input = [153 212; 187 167; 211 186; 176 230];
+
+%figure (2), imshow(B), colormap(gray);
+%[x,y] = ginput(4); base = [x,y];
+base = [181 223; 221 188; 237 207; 198 241];
+
+% close(1); close(2);
+
+figure (3), colormap(gray);
+t = cp2tform(input, base, 'affine');
+[D,Z,T] = procrustes(input, base);
+C = imtransform(A, t);
+T.c, T.b, T.T % print procrustes information
+
+X = [1 0 T.c(1); 0 1 T.c(2); 0 0 1];
+R = [T.T(1,1) T.T(1,2) 0; T.T(2,1) T.T(2,2) 0; 0 0 1];
+S = [T.b 0 0; 0 T.b 0; 0 0 1];
+T = S*R*X
+
+subplot(1,3,1), imshow(A), axis image, axis off, title('A');
+subplot(1,3,2), imshow(B), axis image, axis off, title('B');
+subplot(1,3,3), imshow(C), axis image, axis off, title('C');
